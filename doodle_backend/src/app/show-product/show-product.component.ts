@@ -20,7 +20,7 @@ export class ShowProductComponent implements OnInit {
   alert: boolean = false;
   alert1: boolean = false;
   constructor(private router: Router, public route: ActivatedRoute, private APiService: APIServiceService, private http: HttpClient, private NotificationService: NotificationService) { }
-  imageSrc = '../../assets/ticket_Hstry.png'
+  imageSrc = '../../assets/brocoli.jpg'
   imageAlt = 'iPhone'
   @Output() valueChange = new EventEmitter();
 
@@ -34,27 +34,32 @@ export class ShowProductComponent implements OnInit {
     });
   }
   deleteProduct(product) {
-    console.log(product, "product");
-    let headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
-    })
-
+  
     console.log(localStorage.getItem('userId'), "local");
+    var productId= product.productId;
+    console.log(productId,"productId");
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': 'http://localhost:3000',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
+      }),
+      body: {
+        productId: productId,
+      }
+    }
 
-    this.http.delete(this.URL + "/deleteOrder", product)
-
-
+    this.http.delete(this.URL+"/deleteOrder", options).subscribe(s => {
+      console.log(s);
+    })
+    // return this.http.delete(this.URL+"/deleteOrder"/${productId}`, { responseType: 'json' });
   }
   search(event) {
-    // console.log(event, "event");
     console.log(event.target.value);
-    //  console.log(localStorage.getItem('product'));
     this.products = this.unchangedValue;
     this.products.filter(data => {
       if (data.productName === event.target.value) {
         this.productList.push(data);
-        // console.log(this.products,"lllllllllll");
       }
     });
     this.products = this.productList;
@@ -86,7 +91,9 @@ export class ShowProductComponent implements OnInit {
     }
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE',
+      'Authorization': localStorage.getItem('token')
+
     })
 
     console.log(localStorage.getItem('userId'), "local");
