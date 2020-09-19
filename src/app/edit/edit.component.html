@@ -1,0 +1,21 @@
+<div class="container">
+    <!-- <div class="header">
+
+    </div> -->
+
+<br/>
+<form style="margin-top: 87px;text-align: center;" [formGroup]="personForm">
+  <div>
+    <span >Product Name: <input formControlName="productname"></span>
+  </div>
+  <div style="padding-top:10px">
+    <span>Quantity: <input formControlName="quantity"></span>
+  </div>
+  <div style="padding-top:10px">
+    <span>pricing: <input formControlName="pricing"></span>
+  </div>
+</form>
+<button class="btnChange" (click)="saveForm()">Save</button>
+<!-- <button (click)="resetForm()">Reset</button>  -->
+
+</div>

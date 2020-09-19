@@ -1,0 +1,36 @@
+/* .lg-out{
+    margin-left: -194px;
+    margin-top: 36px;
+    border-color: chartreuse;
+}
+p {
+    font-family: Lato;
+  }
+
+  #css-box{
+    border: 15px solid green;
+    padding: 50px;
+    margin: 20px;
+  } */
+
+  p {
+    font-family: Lato;
+  }
+  
+  
+  .form-control-feedback{
+        animation: 1.0s alertAnim forwards;
+  }
+  
+  
+  @keyframes alertAnim {
+      from {
+          opacity:0;
+          transform: translateY(-20px);
+      }
+      to {
+          opacity:1;
+          transform: translateY(0);
+      }
+  }
+  

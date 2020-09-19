@@ -1,0 +1,7 @@
+<h1 style="padding-top:73px;font-size:24px;text-align: center;">
+    <div *ngIf="products && products.productName">Product Name:{{products.productName}}</div>
+    <div *ngIf="products && products.productId">Quantity:{{products.quantity}}</div>
+    <div *ngIf="products && products.productId">Pricing:{{products.description}}</div>
+    <button (click)="update()"
+        style="margin-top:29px;font-size: 29px;text-align: center;background-color: darkseagreen;">update</button>
+</h1>

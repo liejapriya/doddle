@@ -1,0 +1,16 @@
+h1 { font-family: Lato; }
+
+
+.header{
+    flex-shrink: 0;
+    flex-grow: 0;
+    background: #039be5;
+    padding: 3px 5px;
+  }
+
+  .btnChange{
+    text-transform: none;
+    padding-left: 46px;
+    margin-left: 21px;
+    margin-top: 36px;
+  }

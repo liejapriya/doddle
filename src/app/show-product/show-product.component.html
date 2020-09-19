@@ -1,0 +1,35 @@
+<html>
+    <!-- <p>{{productList}}</p> -->
+    <div *ngIf="alert" class="alert alert-success">
+        <strong></strong> Already  <a href="#" class="alert-link">order available</a>.
+      </div>
+      <div *ngIf="alert1" class="alert alert-success">
+        <strong>Success!</strong> placed your  <a href="#" class="alert-link">order </a>.
+      </div>
+    
+<div class="container">
+    <button style="padding-top: 8px;width: 115px;margin-left:253px;" (click)="productDetail()">Show Product</button>
+    <ul style="border: 7px sollid gray;">
+        <div>
+            <div class="md-form mt-0">
+                <input class="form-control mr-sm-2" (keyup)="search($event)" type="text" placeholder="Search">
+              </div>
+            <li *ngFor="let product of products">
+                <img src="{{imageSrc}}" alt="{{imageAlt}}" style="height: 56px;" />
+                <button style="margin-left: 90px;" (click)="placeOrder(product)">place order</button>
+                <button style="margin-left:177px;" (click)="showProduct(product)">show product</button>
+                <button style="margin-left: 167px; margin-top: 11px;" (click)="deleteProduct(product)">Delete product</button>
+
+                <p > Product Name:{{product.productName}} </p>
+                <p> Pricing:{{product.pricing}} </p>
+                <p> Quantity:{{product.quantity}} </p>
+
+                <p> description:{{product.description}} </p>
+                <hr class="sz-1">
+            </li>
+        </div>
+    </ul>
+</div>
+</html>
+
+
