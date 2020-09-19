@@ -35,9 +35,9 @@ app.post('/home', (req, res) => {
 })
 app.post('/insertProductDetail', checkToken, insertProductDetail.insertProductDetail)
 app.get('/showProductDetail', showProductDetail.showProductDetail)
-app.post('/placeOrderDetail', placeOrderDetail.placeOrderDetail)
+app.post('/placeOrderDetail', checkToken,placeOrderDetail.placeOrderDetail)
 app.post('/updateOrderDetail', updateOrderDetail.updateOrderDetail)
-app.post('/deleteOrder', deleteOrder.deleteOrder)
+app.delete('/deleteOrder', deleteOrder.deleteOrder)
 app.post('/register', (req, res) => {
 
   var users = {

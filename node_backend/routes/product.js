@@ -27,7 +27,7 @@ module.exports = {
     },
 
     showProductDetail: function (req, res) {
-        const sql = "select * from product";
+        const sql = "select * from product ORDER BY productName ASC";
         mysqlConnection.query(sql, function (err, result) {
             if (err) throw err;
             res.send({ success: "true", result: result })
@@ -59,10 +59,18 @@ module.exports = {
         });
         response.send({ Message: "success" })
     },
+
     deleteOrder: function (request, response) {
-        console.log(request.body, "deleet");
+        console.log(request.body.productId, "deleet");
+        const deleteQuery ="delete from product where productId="+request.body.productId;
+        console.log(deleteQuery,"deleteQuery");
+        mysqlConnection.query(deleteQuery,function(err,result){
+            console.log(result,"result");
+            response.send({response:"deleted sucessfuly"})
+        })
     }
-}
+    }
+
 function insertOrderDetail(request) {
     console.log(request.body, "func");
     const insertQuery = "INSERT IGNORE INTO orders ( productId, quantity, userId, pricing) VALUES (" + JSON.stringify(request.body.productId) + "," + JSON.stringify(request.body.quantity) + "," + request.body.userId + "," + JSON.stringify(request.body.pricing) + ")";
