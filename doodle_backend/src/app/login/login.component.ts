@@ -68,7 +68,7 @@ export class LoginComponent implements OnInit {
                     localStorage.setItem('token', data.response.token)
                     localStorage.setItem('userId', data.response.result[0].Id)
 
-                    this.router.navigate(['/create_product']);
+                    this.router.navigate(['/register']);
 
                     // this.authenticationService.loginUser(this.f.username.value, this.f.password.value,this.d,JSON.stringify(this.loginForm.value))
 
