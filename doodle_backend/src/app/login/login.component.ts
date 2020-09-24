@@ -56,19 +56,20 @@ export class LoginComponent implements OnInit {
         })
             .subscribe((data: any) => {
 
-                this.http.get(this.URL + "/register").subscribe(registerData => {
+                // this.http.get(this.URL + "/register").subscribe(registerData => {
 
-                })
+                // })
                 this.d = data;
-
-                if (data == null) {
+                console.log(this.d,"this.d");
+                
+                if (data.response.token == null) {
                     alert("please register")
                 }
                 else {
                     localStorage.setItem('token', data.response.token)
                     localStorage.setItem('userId', data.response.result[0].Id)
 
-                    this.router.navigate(['/register']);
+                    this.router.navigate(['/create_product']);
 
                     // this.authenticationService.loginUser(this.f.username.value, this.f.password.value,this.d,JSON.stringify(this.loginForm.value))
 

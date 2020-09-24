@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./create-product.component.css']
 })
 export class CreateProductComponent implements OnInit {
-  registerForm: FormGroup;
+  createProductForm: FormGroup;
   loading = false;
   submitted = false;
   psject:boolean;
@@ -26,7 +26,7 @@ product:any;
       
   }
   ngOnInit() {
-    this.registerForm = this.formBuilder.group({
+    this.createProductForm = this.formBuilder.group({
       productName: ['', Validators.required],
         quantity: ['', Validators.required],
         pricing: ['', Validators.required],
@@ -36,8 +36,10 @@ product:any;
 }
 
 // convenience getter for easy access to form fields
-get f() { return this.registerForm.controls; }
+get f() { return this.createProductForm.controls; }
 onSubmit(){
+  console.log(this.createProductForm.value,"val");
+  
   this.submitted=true;
 console.log(localStorage.getItem('token'),"token product component");
 
@@ -48,7 +50,7 @@ console.log(localStorage.getItem('token'),"token product component");
     'Authorization': localStorage.getItem('token')
   })
     // this.userservice.product(this.registerForm.value)
-this.http.post(this.URL+"/insertProductDetail",JSON.stringify(this.registerForm.value),
+this.http.post(this.URL+"/insertProductDetail",JSON.stringify(this.createProductForm.value),
 {
   headers:headers
 }
